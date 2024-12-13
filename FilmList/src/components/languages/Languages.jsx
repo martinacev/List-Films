@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useState } from "react";
+import classes from "./Languages.module.css";
 
 const Languages = ({ onLanguageChange }) => {
-  const handleChange = (event) => {
-    onLanguageChange(event.target.value);
+  const [language, setLanguage] = useState("en");
+
+  const toggleLanguage = () => {
+    const newLanguage = language === "en" ? "de" : "en";
+    setLanguage(newLanguage);
+    onLanguageChange(newLanguage);
   };
 
   return (
-    <div className="language-switch">
-      <label htmlFor="language">Choose Language: </label>
-      <select id="language" onChange={handleChange}>
-        <option value="en">English</option>
-        <option value="de">German</option>
-      </select>
+    <div className={classes.container}>
+      <button onClick={toggleLanguage} className={classes.toggleButton}>
+        {language === "en" ? "DE" : "EN"}
+      </button>
     </div>
   );
 };
 
 export default Languages;
-

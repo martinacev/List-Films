@@ -1,13 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types'; 
 import Languages from '../languages/Languages';
+import classes from "./Header.module.css";
 
-const Header = ({ onLanguageChange }) => {
+const Header = ({ onLanguageChange, title }) => {
   return (
-    <header>
-      <h1>Star Wars Films</h1>
+    <div className={classes.container}>
+      <h1 className={classes.title}>{title}</h1>
       <Languages onLanguageChange={onLanguageChange} /> 
-    </header>
+    </div>
   );
 };
+
+Header.defaultProps = {
+  title : "Star Wars Films"
+}
+
+Header.PropTypes = {
+  title: PropTypes.string,
+}
 
 export default Header;

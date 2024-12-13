@@ -1,0 +1,10 @@
+.toggleButton {
+    border: none;
+    background-color: transparent;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 20px;
+    width: auto;
+}
