@@ -5,7 +5,7 @@
 
 .card {
   margin: 30px 0px;
-  padding: 0;
+  padding: 10px;
   font-size: 20px;
   gap: 10px;
   display: flex;
