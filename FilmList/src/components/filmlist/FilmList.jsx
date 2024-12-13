@@ -57,8 +57,12 @@ function FilmList({ language }) {
       loader={<p>Loading more...</p>}
     >
       <div className={classes.FilmList}>
-        {data.allFilms.films.map((film) => (
-          <div key={film.id} className={classes.card}>
+        {data.allFilms.films.map((film, index) => (
+          <div
+            key={film.id}
+            className={classes.card}
+            style={{ "--animation-delay": `${index * 0.2}s` }} 
+          >
             <h2>{film.title}</h2>
             <p className={classes.title}>
               <strong>{translate("episode")}:</strong> {film.episodeID}

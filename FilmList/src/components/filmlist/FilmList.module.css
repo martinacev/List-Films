@@ -1,6 +1,6 @@
 .FilmList {
-    color: black;
-    margin: 15px;
+  color: black;
+  margin: 15px;
 }
 
 .card {
@@ -11,40 +11,47 @@
   display: flex;
   flex-direction: column;
   border: 1px solid gray;
-  width: 30%; 
+  width: 30%;
   align-items: start;
   justify-content: center;
-  box-shadow: 0 20px 30px rgba(20, 10, 15, 10);
-  transition: transform 0.3s ease, box-shadow 0.2s ease-out; 
+  box-shadow: 0 20px 30px rgba(20, 10, 15, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.2s ease-out;
+  opacity: 0; /* Start invisible */
+  transform: translateX(-100%); /* Start off-screen */
+  animation: slideIn 0.5s ease forwards;
+  animation-delay: var(--animation-delay, 0s); /* Custom delay for staggered effect */
 }
 
 .card:hover {
   transform: scale(1.01);
-  box-shadow: 0 30px 40px rgba(20, 10, 15, 15);
+  box-shadow: 0 30px 40px rgba(20, 10, 15, 0.15);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @media (max-width: 1280px) {
-    .card {
-      width: 90%; 
-    }
-  }
-
-@media (max-width: 1024x) {
-    .card {
-      width: 90%; 
-    }
-  }
-
-
-@media (max-width: 768px) {
   .card {
-    width: 90%; 
+    width: 90%;
   }
 }
 
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+  }
+}
 
 @media (max-width: 480px) {
   .card {
-    width: 100%; 
+    width: 100%;
   }
 }
