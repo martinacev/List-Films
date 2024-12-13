@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'; 
-import Languages from './components/languages/Languages';
-import FilmList from "./components/filmlist/FilmList";
+import Header from './components/header/Header';
+import Main from "./components/main/Main";
+
 
 
 const client = new ApolloClient({
@@ -19,11 +20,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <header>
-          <h1>Star Wars Films</h1>
-          <Languages onLanguageChange={handleLanguageChange} />
-        </header>
-        <FilmList language={language} />
+      <Header onLanguageChange={handleLanguageChange} />
+      <Main language={language} />
       </div>
     </ApolloProvider>
   );
