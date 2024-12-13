@@ -1,4 +1,4 @@
-import React from 'react';
+
 import FilmList from '../filmlist/FilmList'; 
 import classes from "./main.module.css";
 

@@ -5,7 +5,7 @@ import { GET_FILMS } from "../graphlql/queries";
 import { format } from "date-fns";
 import classes from "./FilmList.module.css";
 
-function FilmList() {
+function FilmList({ language }) {
   const { data, loading, error, fetchMore } = useQuery(GET_FILMS);
   const [hasMore, setHasMore] = useState(true);
 
@@ -31,6 +31,24 @@ function FilmList() {
     }
   };
 
+  const translate = (key) => {
+    const translations = {
+      en: {
+        episode: "Episode",
+        director: "Director",
+        releaseDate: "Release Date",
+        producers: "Producers",
+      },
+      de: {
+        episode: "Episode",
+        director: "Regisseur",
+        releaseDate: "Veröffentlichungsdatum",
+        producers: "Produzenten",
+      },
+    };
+    return translations[language][key];
+  };
+
   return (
     <InfiniteScroll
       dataLength={data.allFilms.films.length}
@@ -43,17 +61,17 @@ function FilmList() {
           <div key={film.id} className={classes.card}>
             <h2>{film.title}</h2>
             <p className={classes.title}>
-              <strong>Episode:</strong> {film.episodeID}
+              <strong>{translate("episode")}:</strong> {film.episodeID}
             </p>
             <p className={classes.title}>
-              <strong>Director:</strong> {film.director}
+              <strong>{translate("director")}:</strong> {film.director}
             </p>
             <p className={classes.title}>
-              <strong>Release Date:</strong>{" "}
+              <strong>{translate("releaseDate")}:</strong>{" "}
               {format(new Date(film.releaseDate), "MMMM dd, yyyy")}
             </p>
             <p className={classes.title}>
-              <strong>Producers:</strong> {film.producers.join(", ")}
+              <strong>{translate("producers")}:</strong> {film.producers.join(", ")}
             </p>
           </div>
         ))}
