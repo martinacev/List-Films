@@ -40,19 +40,19 @@ function FilmList() {
     >
       <div className={classes.FilmList}>
         {data.allFilms.films.map((film) => (
-          <div key={film.id} className="film-card">
+          <div key={film.id} className={classes.card}>
             <h2>{film.title}</h2>
-            <p>
+            <p className={classes.title}>
               <strong>Episode:</strong> {film.episodeID}
             </p>
-            <p>
+            <p className={classes.title}>
               <strong>Director:</strong> {film.director}
             </p>
-            <p>
+            <p className={classes.title}>
               <strong>Release Date:</strong>{" "}
               {format(new Date(film.releaseDate), "MMMM dd, yyyy")}
             </p>
-            <p>
+            <p className={classes.title}>
               <strong>Producers:</strong> {film.producers.join(", ")}
             </p>
           </div>
