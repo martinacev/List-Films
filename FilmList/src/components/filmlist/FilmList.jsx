@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
-import InfiniteScroll from "react-infinite-scroll-component";
 import { GET_FILMS } from "../graphlql/queries";
 import { format } from "date-fns";
 import classes from "./FilmList.module.css";
@@ -50,7 +49,7 @@ function FilmList({ language }) {
   };
 
   return (
-    <InfiniteScroll
+    <div
       dataLength={data.allFilms.films.length}
       next={loadMore}
       hasMore={hasMore}
@@ -80,7 +79,7 @@ function FilmList({ language }) {
           </div>
         ))}
       </div>
-    </InfiniteScroll>
+    </div>
   );
 }
 
